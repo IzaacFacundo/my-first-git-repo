@@ -1,3 +1,4 @@
+# comment
 words = []
 
 with open('/usr/share/dict/words', 'r') as f:
