@@ -2,6 +2,7 @@
 
 import json
 import requests
+import math
 
 def calculate_turbidity(calibration_constant:float, detector_current:float) -> float:
     '''
@@ -18,7 +19,7 @@ def calculate_turbidity(calibration_constant:float, detector_current:float) -> f
     turbidity = calibration_constant * detector_current
     return(turbidity)
 
-def calculate_minimum_time(current_turbidity:float) -> int:
+def calculate_minimum_time(current_turbidity:float) -> float:
     '''
     This function calculates the minimum time for the measured water to fall below the safe  
     threshold for turbidity. This method uses exponential decay.
@@ -27,18 +28,18 @@ def calculate_minimum_time(current_turbidity:float) -> int:
         current_turbidity (float) : This is the current turbidity of the water
 
     Returns:
-        time_left (int) : This is the number of hours before the turbidity of the water falls  
+        time_left (float) : This is the amount of hours before the turbidity of the water falls  
         below the safe threshold.
     '''
     
     turbidity_threshold = 1.0
     decay_factor = 0.02
     time_left = 0
-    reduced_turbidity = current_turbidity
 
-    while(turbidity_threshold < reduced_turbidity):
-        time_left += 1
-        reduced_turbidity = current_turbidity*(1-decay_factor)**time_left
+    if (current_turbidity < turbidity_threshold):
+        pass # skip calculation		
+    else:
+        time_left = math.log10(turbidity_threshold / current_turbidity) / math.log10(1 - decay_factor)
     
     return(time_left)
 
