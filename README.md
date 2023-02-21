@@ -11,6 +11,8 @@ The contents of this repo are as follows:
 
 	homework01
 	homework02
+    homework03
+    homework04
 
 Each folder contains its own README.md file that details its contents.
 
@@ -20,3 +22,5 @@ Here is a short summary of each folder:
 	
 	homework01: Code for homework01, basics of python scripting
 	homework02: Code for homework02, json handling
+    homework03: Code for homework03, unit testing
+    homework04: Code for homework04, flask applications
