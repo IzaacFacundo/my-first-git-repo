@@ -8,26 +8,26 @@ of the ISS.
 ## iss\_tracker.py
 
 This python script runs the API that the user can pull from. It has the following routes:
-    '\_'
-    '\_epochs'
-    '\_epochs\_\<epoch>'
-    '\_epochs\_\<epoch>\_speed'
+    '/'
+    '/epochs'
+    '/epochs/\<epoch>'
+    '/epochs/\<epoch>/speed'
 
-### '\_'
+### '/'
 
-'\_' returns the entire data set for the ISS tracker in .xml form. It returns it to the user as a dictionary.
+'/' returns the entire data set for the ISS tracker in .xml form. It returns it to the user as a dictionary.
 
-### '\_epochs'
+### '/epochs'
 
-'\_epochs' returns a list of strings that contains all of the epochs (times) contained in the data.
+'/epochs' returns a list of strings that contains all of the epochs (times) contained in the data.
 
-### '\_epochs\_\<epoch>'
+### '/epochs/\<epoch>'
 
-'\_epochs\_\<epoch>' returns the state vector of the ISS at the given epoch.
+'/epochs/\<epoch>' returns the state vector of the ISS at the given epoch.
 
-### '\_epochs\_\<epoch>\_speed'
+### '/epochs/\<epoch>/speed'
 
-'\_epochs\_\<epoch>\_speed' returns the absolute speed of the ISS in km/s at the given epoch.
+'/epochs/\<epoch\>/speed' returns the absolute speed of the ISS in km/s at the given epoch.
 
 ## How to run the code
 
