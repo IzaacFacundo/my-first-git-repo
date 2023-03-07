@@ -145,8 +145,7 @@ def help_menu() -> str:
     help_route = "    '/help'                    Returns this help menu\n"
     delete_data = "    '/delete-data'             Deletes all ISS Data stored in app. Must be run with '-X DELETE' \n
                      following the curl command and preceding the address and route.\n"
-    post_data = "    '/post-data'               Retrieves ISS data from the ISS website restoring it after use of \n
-                    '/delete-data'. Must be run with '-X POST' following the curl \n                               command and preceding the address and route.\n"
+    post_data = "    '/post-data'               Retrieves ISS data from the ISS website restoring it after use of \n                        '/delete-data'. Must be run with '-X POST' following the curl \n                               command and preceding the address and route.\n"
     message = "\n" + intro + routes + slash + epochs + query + queryl + queryo + state + speed + help_route + delete_data + post_data
     return message
 
