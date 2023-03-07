@@ -64,7 +64,7 @@ Here is the command to pull this container from Docker Hub:
 To build the docker image locally, you must run the following command from within the directory that the python  
 script and Dockerfile reside:
 ```
-    docker build -t izaacfacundo/iss_tracker:hw5
+    docker build -t izaacfacundo/iss_tracker:hw5 .
 ```
 
 ### Run code with built docker image
