@@ -139,12 +139,10 @@ def help_menu() -> str:
     query = "                                   Query Parameters: \n"
     queryl = "                                       limit   Positive integer of how many epochs to display\n"
     queryo = "                                       offset  Positive integer of which epoch will start the list\n"
-    state = "    '/epochs/<epoch>'          Returns the state vector (position in km and velocity in km/s) of the \n
-                    ISS at a specified epoch\n"
+    state = "    '/epochs/<epoch>'          Returns the state vector (position in km and velocity in km/s) of the \n                    ISS at a specified epoch\n"
     speed = "    '/epochs/<epoch>/speed'    Returns the absolute speed of specific epoch in km/s\n"
     help_route = "    '/help'                    Returns this help menu\n"
-    delete_data = "    '/delete-data'             Deletes all ISS Data stored in app. Must be run with '-X DELETE' \n
-                     following the curl command and preceding the address and route.\n"
+    delete_data = "    '/delete-data'             Deletes all ISS Data stored in app. Must be run with '-X DELETE' \n                     following the curl command and preceding the address and route.\n"
     post_data = "    '/post-data'               Retrieves ISS data from the ISS website restoring it after use of \n                        '/delete-data'. Must be run with '-X POST' following the curl \n                               command and preceding the address and route.\n"
     message = "\n" + intro + routes + slash + epochs + query + queryl + queryo + state + speed + help_route + delete_data + post_data
     return message
