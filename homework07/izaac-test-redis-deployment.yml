@@ -2,27 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-pvc-deployment
+  name: izaac-test-redis
   labels:
-    app: hello-pvc-app
+    app: izaac-test-redis
+    username: izaac
+    env: test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello-pvc-app
+      app: izaac-test-redis
   template:
     metadata:
       labels:
-        app: hello-pvc-app
+        app: izaac-test-redis
+        username: izaac
+        env: test
     spec:
       containers:
-        - name: hellos
-          image: ubuntu:18.04
-          command: ['sh', '-c', 'echo "Hello, Kubernetes!" >> /data/out.txt && sleep 3600']
+        - name: redis
+          image: redis:7
           volumeMounts:
-          - name: hello-<username>-data
+          - name: pvc-storage
             mountPath: "/data"
       volumes:
-      - name: hello-<username>-data
+      - name: pvc-storage
         persistentVolumeClaim:
-          claimName: hello-<username>-data
+          claimName: izaac-test-redis-pvc
