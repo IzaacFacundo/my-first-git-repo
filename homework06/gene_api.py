@@ -19,16 +19,16 @@ def post_data_to_redis():
         Returns:
             Message confirming behaviour (str)
     '''
-
+    print("This process may take a while\n")
+    
     try:
-        print("This process may take a while\n")
         HGNC_data = requests.get(url='https://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/json/hgnc_complete_set.json')
         HGNC_data = HGNC_data.json()['response']['docs'] # narrowed down list of dicts
         rd.set('HGNC_data', json.dumps(HGNC_data))
 
         return "Successfully loaded gene data into database\n"
     except:
-        return "Data post unsuccessful"
+        return "Data post unsuccessful\n"
 
 @app.route('/data',methods=['GET'])
 def get_data_from_redis() -> list:
