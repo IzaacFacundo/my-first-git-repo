@@ -7,7 +7,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-rd = redis.Redis(host='redis-db',port=6379,db=0)
+rd = redis.Redis(host='10.233.38.133',port=6379,db=0)
 
 @app.route('/data',methods=['POST'])
 def post_data_to_redis():
