@@ -18,7 +18,7 @@ spec:
       containers:
         - name: gene-api
           imagePullPolicy: Always
-          image: izaacfacundo/gene_api:1.0
+          image: izaacfacundo/gene_api:2.0
           env:
           - name: FLASK_APP
             value: "app.py"
