@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: izaac-test-flask
+  labels:
+    app: izaac-test-flask-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: izaac-test-flask-app
+  template:
+    metadata:
+      labels:
+        app: izaac-test-flask-app
+    spec:
+      containers:
+        - name: gene-api
+          imagePullPolicy: Always
+          image: izaacfacundo/gene_api:1.0
+          env:
+          - name: FLASK_APP
+            value: "app.py"
+          ports:
+          - name: http
+            containerPort: 5000
