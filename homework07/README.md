@@ -89,9 +89,13 @@ each file in a k8s environment:
 
 `
 kubectl apply -f izaac-test-redis-deployment.yml
+
 kubectl apply -f izaac-test-redis-pvc.yml
+
 kubectl apply -f izaac-test-redis-servie.yml
+
 kubectl apply -f izaac-test-flask-deployment.yml
+
 kubectl apply -f izaac-test-flask-service.yml
 `
 
