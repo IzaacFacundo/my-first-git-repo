@@ -86,6 +86,7 @@ app, and one for the redis database. There are two services that maintain consta
 pods, and there is one PVC for the redis database. To get everything running, the user must apply  
 each of the .yml files using kubectl. To run the Gene API using k8s, use the following command for  
 each file in a k8s environment:  
+
 `
 kubectl apply -f izaac-test-redis-deployment.yml
 kubectl apply -f izaac-test-redis-pvc.yml
@@ -93,33 +94,48 @@ kubectl apply -f izaac-test-redis-servie.yml
 kubectl apply -f izaac-test-flask-deployment.yml
 kubectl apply -f izaac-test-flask-service.yml
 `
+
 Before the app can be used, an IP address must be changed in the gene\_api.py script. The IP address  
 that needs to be changed is in line 10, and it needs to be changed to the cluster IP for the redis  
 service. To find this IP, run the following command:  
+
 `kubectl get services`
+
 Find the cluster IP for the redis service, then put it after 'host=' in line 10 of the gene\_api.py.  
 After the user has done this, they need to rebuild and push the image to docker hub and change the  
 image in the flask deployment. To first build and push the new image, the user must run the following  
 two commands in an environment with docker installed:  
+
 `docker build -t <dockerhub_username>/gene_api:2.0 .`
+
 `docker push <dockerhub_username>/gene_api:2.0`
+
 The <dockerhub_username> should be replaced with the user's DockerHub username. Next, the user should  
 navigate to the izaac-test-flask-deployment.yml file and change line 21 to contain the user's  
 DockerHub username instead of izaacfacundo. Finally, the user must reset the deployment by deleting  
 the pod. The pod will come back online right after, and the app will be accessible. To delete the pod  
 run the following command:
+
 `kubectl delete pods <pod_name>`
+
 The pod name can be found by running:
+
 `kubectl get pods`
+
 Now the app should be up and running!
 
 To use the API, the user must exec into one of the pods. This command can be used:  
+
 `kubectl exec -it <flask pod> -- /bin/bash`
+
 Where <flask pod> is the name of the pod given to the flask app instance. This name can be found by  
 using the following command:  
+
 `kubectl get pods`
 
 Once the user is in the bash of the pod, the curl commands detailed in the previous section can be  
 run with this new IP:
+
 `curl -X POST izaac-test-flask-service:5000/data`
+
 (replacing localhost with izaac-test-flask-service)
