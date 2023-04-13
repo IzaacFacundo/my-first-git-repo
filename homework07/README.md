@@ -87,17 +87,17 @@ pods, and there is one PVC for the redis database. To get everything running, th
 each of the .yml files using kubectl. To run the Gene API using k8s, use the following command for  
 each file in a k8s environment:  
 
-`
-kubectl apply -f izaac-test-redis-deployment.yml
 
-kubectl apply -f izaac-test-redis-pvc.yml
+`kubectl apply -f izaac-test-redis-deployment.yml`
 
-kubectl apply -f izaac-test-redis-servie.yml
+`kubectl apply -f izaac-test-redis-pvc.yml`
 
-kubectl apply -f izaac-test-flask-deployment.yml
+`kubectl apply -f izaac-test-redis-servie.yml`
 
-kubectl apply -f izaac-test-flask-service.yml
-`
+`kubectl apply -f izaac-test-flask-deployment.yml`
+
+`kubectl apply -f izaac-test-flask-service.yml`
+
 
 Before the app can be used, an IP address must be changed in the gene\_api.py script. The IP address  
 that needs to be changed is in line 10, and it needs to be changed to the cluster IP for the redis  
